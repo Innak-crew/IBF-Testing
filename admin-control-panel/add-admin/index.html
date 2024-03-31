@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="has-aside-left has-aside-mobile-transition has-navbar-fixed-top has-aside-expanded">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Indian Biomedical Forum - Add new Admin</title>
+
+    <!-- Bulma is included -->
+    <link rel="stylesheet" href="../../../asserts/css/bulma.main.min.css">
+    <link rel="stylesheet" href="../../asserts/css/notify.css">
+    <link rel="stylesheet" href="../../asserts/css/admin.css">
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <script src="../../asserts/js/script.js"></script>
+
+    
+</head>
+
+<body>
+    <div id="app">
+
+        <nav id="navbar-main" class="navbar is-fixed-top">
+            <div class="navbar-brand">
+                <a class="navbar-item is-hidden-desktop jb-aside-mobile-toggle">
+                    <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
+                </a>
+            </div>
+            <div class="navbar-brand is-right">
+                <a class="navbar-item is-hidden-desktop jb-navbar-menu-toggle" data-target="navbar-menu">
+                    <span class="icon"><i class="mdi mdi-dots-vertical"></i></span>
+                </a>
+            </div>
+            <div class="navbar-menu fadeIn animated faster" id="navbar-menu">
+                <div class="navbar-end">
+                    <a title="Log out" class="navbar-item is-desktop-icon-only" id="signOutButton">
+                        <span class="icon"><i class="mdi mdi-logout"></i></span>
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <aside class="aside is-placed-left is-primary is-expanded">
+            <div class="aside-tools">
+                <div class="aside-tools-label">
+                    <a class="navbar-item" href="/">
+                        <img src="../../../asserts/img/ibf-logo.png" width="100%" height="">
+                    </a>
+                </div>
+            </div>
+            <div class="menu is-menu-main">
+                <p class="menu-label">General</p>
+                <ul class="menu-list">
+                    <li>
+                        <a href="/admin-control-panel" class=" router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+                            <span class="menu-item-label">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin-control-panel/member/" class=" router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-account-multiple"></i></i></span>
+                            <span class="menu-item-label">Members</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin-control-panel/campus-ambassador" class=" router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-account-multiple"></i></i></span>
+                            <span class="menu-item-label">Campus Ambassadors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin-control-panel/add-admin" class="is-active router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-account-multiple"></i></i></span>
+                            <span class="menu-item-label">Add Admin</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="section is-title-bar">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <ul>
+                            <li>Admin</li>
+                            <li>Add Admin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section is-main-section">
+            <div class="card has-table has-mobile-sort-spaced">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                        Add new Admin
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="container">
+                        <div class="columns is-centered">
+                            <div class="column is-half">
+                                <form action="#" method="POST" id="add-admin-form">
+                                    <div class="field is-grouped">
+                                        <p class="control is-expanded">
+                                            <input class="input" type="email" placeholder="Enter your email"  id="email" required>
+                                        </p>
+                                        <p class="control">
+                                            <button type="submit" class="button is-success" id="add-email-btn">Submit</button>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer" id="custom-footer">
+            <div class="container-fluid">
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            Design & Developed by<p><b class="ml-1"><a
+                                        href="https://innak-crew.github.io/links?redirect=linkedin" target="_blank"
+                                        rel="noopener noreferrer">innak</a></b></p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <div class="logo">
+                                <a href="https://innak-crew.github.io/links?redirect=linkedin" target="_blank"
+                                    rel="noopener noreferrer"><img
+                                        src="https://innak-crew.github.io/innak-logo/rec/Innak-Transprent.png"
+                                        alt="innak"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="email-confirmation-modal" class="modal">
+        <div class="modal-background jb-modal-close"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Confirm action</p>
+                <button class="delete jb-modal-close" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body" id="email-confirmation-modal-content">
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button jb-modal-close">Cancel</button>
+                <button class="button is-danger" id="sure-action-btn">Sure</button>
+            </footer>
+        </div>
+        <button class="modal-close is-large jb-modal-close" aria-label="close"></button>
+    </div>
+
+
+    <script type="text/javascript" src="../../../asserts/js/bulma.main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+
+    <script src="../../asserts/js/notify.js"></script>
+    <script src="../../asserts/js/jspdf.umd.min.js"></script>
+    <script type="module" src="../../asserts/js/Admin/add-admin.js"></script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,315 @@
+:root {
+    --color-primary: #009D4C;
+    --color-secondary: #00518E;
+  }
+  
+  @layer dna {
+    @property --rotate-y {
+      syntax: "<angle>";
+      inherits: true;
+      initial-value: 0deg;
+    }
+    @-webkit-keyframes dna {
+      from {
+        --rotate-y: 0deg;
+      }
+      to {
+        --rotate-y: 360deg;
+      }
+    }
+    @keyframes dna {
+      from {
+        --rotate-y: 0deg;
+      }
+      to {
+        --rotate-y: 360deg;
+      }
+    }
+    @property --rotate-container {
+      syntax: "<angle>";
+      inherits: true;
+      initial-value: 0deg;
+    }
+    @-webkit-keyframes rotate-container {
+      from {
+        --rotate-container: 42deg;
+      }
+      50% {
+        --rotate-container: 142deg;
+      }
+      to {
+        --rotate-container: 42deg;
+      }
+    }
+    @keyframes rotate-container {
+      from {
+        --rotate-container: 42deg;
+      }
+      50% {
+        --rotate-container: 142deg;
+      }
+      to {
+        --rotate-container: 42deg;
+      }
+    }
+    .dna-container {
+      filter: url(#blurFilter) contrast(1.5) brightness(1.5) saturate(0.6);
+      position: absolute;
+      transform: scale(0.55);
+      right: 0px;
+      bottom: 0px;
+    }
+    @media (max-width: 1000px) {
+      .dna-container {
+        transform: scale(0.25);
+      }
+    }
+    @media (max-height: 1000px) {
+      .dna-container {
+        transform: scale(0.25);
+      }
+    }
+  
+    .dna {
+      --width: 14rem;
+      --count: 50;
+      display: flex;
+      flex-direction: column;
+      z-index: 1111;
+      -webkit-animation: dna 4s linear infinite, rotate-container 30s ease-in-out infinite;
+              animation: dna 4s linear infinite, rotate-container 30s ease-in-out infinite;
+      transform-style: preserve-3d;
+      rotate: var(--rotate-container);
+      transform: rotateY(var(--rotate-y, 0deg));
+    }
+    
+    @media (prefers-reduced-motion) {
+      .dna {
+        -webkit-animation: unset;
+                animation: unset;
+      }
+    }
+    .dna .item {
+      display: flex;
+      align-items: center;
+      transform-style: preserve-3d;
+      --a: calc(360deg / var(--count) * (var(--i)));
+      transform: rotateY(var(--a));
+    }
+    .dna .item > div {
+      width: var(--width);
+      height: 0.42rem;
+      background: white;
+      background: conic-gradient(color-mix(in oklch, color-mix(in oklch, var(--color-primary), white 6%), transparent 10%), color-mix(in oklch, var(--color-secondary), black 6%));
+      transform-style: preserve-3d;
+    }
+    .dna .item > div:first-of-type, .dna .item > div:last-of-type {
+      --thickness: 0.9rem;
+      width: var(--thickness);
+      height: var(--thickness);
+      background: var(--color-secondary);
+      border-radius: 50%;
+    }
+    @-webkit-keyframes dot-scale {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.6);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    @keyframes dot-scale {
+      from {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.6);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    .dna .item > div:first-of-type::before, .dna .item > div:first-of-type::after, .dna .item > div:last-of-type::before, .dna .item > div:last-of-type::after {
+      content: "";
+      position: absolute;
+      width: calc(var(--thickness) * 0.5);
+      border-radius: 50%;
+      aspect-ratio: 1;
+      transform-style: preserve-3d;
+    }
+    .dna .item > div:first-of-type::before, .dna .item > div:last-of-type::before {
+      background: white;
+      width: calc(var(--thickness) * 0.9);
+      left: -0.4rem;
+      top: -0.4rem;
+      -webkit-animation: dot-scale 2s ease-in-out infinite;
+              animation: dot-scale 2s ease-in-out infinite;
+    }
+    .dna .item > div:first-of-type::after, .dna .item > div:last-of-type::after {
+      background: rgba(0, 0, 0, 0.09);
+      right: 0.3rem;
+      bottom: 0.3rem;
+    }
+    .dna .item > div:last-of-type {
+      background: var(--color-primary);
+    }
+    .dna .item > div:first-of-type, .dna .item > div:last-of-type {
+      transform: rotateY(calc(360deg / var(--count) * -1 * var(--i) - var(--rotate-y)));
+    }
+    .dna .item:nth-child(1) {
+      --i: 0;
+    }
+    .dna .item:nth-child(2) {
+      --i: 1;
+    }
+    .dna .item:nth-child(3) {
+      --i: 2;
+    }
+    .dna .item:nth-child(4) {
+      --i: 3;
+    }
+    .dna .item:nth-child(5) {
+      --i: 4;
+    }
+    .dna .item:nth-child(6) {
+      --i: 5;
+    }
+    .dna .item:nth-child(7) {
+      --i: 6;
+    }
+    .dna .item:nth-child(8) {
+      --i: 7;
+    }
+    .dna .item:nth-child(9) {
+      --i: 8;
+    }
+    .dna .item:nth-child(10) {
+      --i: 9;
+    }
+    .dna .item:nth-child(11) {
+      --i: 10;
+    }
+    .dna .item:nth-child(12) {
+      --i: 11;
+    }
+    .dna .item:nth-child(13) {
+      --i: 12;
+    }
+    .dna .item:nth-child(14) {
+      --i: 13;
+    }
+    .dna .item:nth-child(15) {
+      --i: 14;
+    }
+    .dna .item:nth-child(16) {
+      --i: 15;
+    }
+    .dna .item:nth-child(17) {
+      --i: 16;
+    }
+    .dna .item:nth-child(18) {
+      --i: 17;
+    }
+    .dna .item:nth-child(19) {
+      --i: 18;
+    }
+    .dna .item:nth-child(20) {
+      --i: 19;
+    }
+    .dna .item:nth-child(21) {
+      --i: 20;
+    }
+    .dna .item:nth-child(22) {
+      --i: 21;
+    }
+    .dna .item:nth-child(23) {
+      --i: 22;
+    }
+    .dna .item:nth-child(24) {
+      --i: 23;
+    }
+    .dna .item:nth-child(25) {
+      --i: 24;
+    }
+    .dna .item:nth-child(26) {
+      --i: 25;
+    }
+    .dna .item:nth-child(27) {
+      --i: 26;
+    }
+    .dna .item:nth-child(28) {
+      --i: 27;
+    }
+    .dna .item:nth-child(29) {
+      --i: 28;
+    }
+    .dna .item:nth-child(30) {
+      --i: 29;
+    }
+    .dna .item:nth-child(31) {
+      --i: 30;
+    }
+    .dna .item:nth-child(32) {
+      --i: 31;
+    }
+    .dna .item:nth-child(33) {
+      --i: 32;
+    }
+    .dna .item:nth-child(34) {
+      --i: 33;
+    }
+    .dna .item:nth-child(35) {
+      --i: 34;
+    }
+    .dna .item:nth-child(36) {
+      --i: 35;
+    }
+    .dna .item:nth-child(37) {
+      --i: 36;
+    }
+    .dna .item:nth-child(38) {
+      --i: 37;
+    }
+    .dna .item:nth-child(39) {
+      --i: 38;
+    }
+    .dna .item:nth-child(40) {
+      --i: 39;
+    }
+    .dna .item:nth-child(41) {
+      --i: 40;
+    }
+    .dna .item:nth-child(42) {
+      --i: 41;
+    }
+    .dna .item:nth-child(43) {
+      --i: 42;
+    }
+    .dna .item:nth-child(44) {
+      --i: 43;
+    }
+    .dna .item:nth-child(45) {
+      --i: 44;
+    }
+    .dna .item:nth-child(46) {
+      --i: 45;
+    }
+    .dna .item:nth-child(47) {
+      --i: 46;
+    }
+    .dna .item:nth-child(48) {
+      --i: 47;
+    }
+    .dna .item:nth-child(49) {
+      --i: 48;
+    }
+    .dna .item:nth-child(50) {
+      --i: 49;
+    }
+    .dna .item:nth-child(51) {
+      --i: 50;
+    }
+  }

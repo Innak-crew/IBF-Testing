@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="has-aside-left has-aside-mobile-transition has-navbar-fixed-top has-aside-expanded">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Indian Biomedical Forum - Admin Dashboard</title>
+
+    <!-- Bulma is included -->
+    <link rel="stylesheet" href="../asserts/css/bulma.min.css" />
+    <link rel="stylesheet" href="../asserts/css/bulma.main.min.css">
+    <link rel="stylesheet" href="../asserts/css/admin.css">
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div id="app">
+        <nav id="navbar-main" class="navbar is-fixed-top">
+            <div class="navbar-brand">
+                <a class="navbar-item is-hidden-desktop jb-aside-mobile-toggle">
+                    <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
+                </a>
+            </div>
+            <div class="navbar-brand is-right">
+                <a class="navbar-item is-hidden-desktop jb-navbar-menu-toggle" data-target="navbar-menu">
+                    <span class="icon"><i class="mdi mdi-dots-vertical"></i></span>
+                </a>
+            </div>
+            <div class="navbar-menu fadeIn animated faster" id="navbar-menu">
+                <div class="navbar-end">
+                    <a title="Log out" class="navbar-item is-desktop-icon-only" id="signOutButton">
+                        <span class="icon"><i class="mdi mdi-logout"></i></span>
+                        <span>Log out</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <aside class="aside is-placed-left is-primary is-expanded">
+            <div class="aside-tools">
+                <div class="aside-tools-label">
+                    <a class="navbar-item" href="/">
+                        <img src="../asserts/img/ibf-logo.png" width="100%" height="">
+                    </a>
+                </div>
+            </div>
+            <div class="menu is-menu-main">
+                <p class="menu-label">General</p>
+                <ul class="menu-list">
+                    <li>
+                        <a href="/admin-control-panel/" class="is-active router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+                            <span class="menu-item-label">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin-control-panel/member/" class=" router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                            <span class="menu-item-label">Members</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin-control-panel/campus-ambassador" class=" router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
+                            <span class="menu-item-label">Campus Ambassadors</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin-control-panel/add-admin" class="router-link-active has-icon">
+                            <span class="icon"><i class="mdi mdi-account-multiple"></i></i></span>
+                            <span class="menu-item-label">Add Admin</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+        <section class="section is-title-bar">
+            <div class="level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <ul>
+                            <li>Admin</li>
+                            <li>Dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section is-main-section">
+            <h1 class="title has-text-success">Members</h1>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-4">
+                    <div class="card tile is-child has-background-primary-light">
+                        <div class="card-content">
+                            <div class="level is-mobile">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class="subtitle is-spaced">
+                                            Total Members
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="total-members">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4">
+                    <div class="card tile is-child has-background-info-light">
+                        <div class="card-content">
+                            <div class="level is-mobile">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class="subtitle is-spaced ">
+                                            Active Members
+                                        </h3>
+                                        <h1 class="title has-text-centered " id="active-members">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4">
+                    <div class="card tile is-child has-background-danger-light">
+                        <div class="card-content">
+                            <div class="level is-mobile">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class="subtitle is-spaced">
+                                            Inactive Members
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="inactive-members">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="title has-text-success">Campus Ambassadors</h1>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-4-desktop is-6-tablet is-12-mobile">
+                    <div class="card tile is-child has-background-primary-light">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class=" is-spaced has-text-centered ">
+                                            Total
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="total-ca">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4-desktop is-6-tablet is-12-mobile">
+                    <div class="card tile is-child has-background-warning-light">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class=" is-spaced has-text-centered ">
+                                            Waiting
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="waiting-ca">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4-desktop is-6-tablet is-12-mobile">
+                    <div class="card tile is-child has-background-info-light">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h4 class=" is-spaced has-text-centered ">
+                                            Pending
+                                        </h4>
+                                        <h1 class="title has-text-centered" id="pending-ca">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4-desktop is-6-tablet is-12-mobile">
+                    <div class="card tile is-child has-background-success-light">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class=" is-spaced  ">
+                                            Approved
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="approved-ca">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4-desktop is-6-tablet is-12-mobile">
+                    <div class="card tile is-child has-background-danger-light">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class=" is-spaced has-text-centered ">
+                                            Rejected
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="rejected-ca">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tile is-parent is-4-desktop is-6-tablet is-12-mobile">
+                    <div class="card tile is-child has-background-danger-light">
+                        <div class="card-content">
+                            <div class="level">
+                                <div class="level-item">
+                                    <div class="is-widget-label">
+                                        <h3 class=" is-spaced has-text-centered ">
+                                            Inactive
+                                        </h3>
+                                        <h1 class="title has-text-centered" id="inactive-ca">
+                                            <div class="icon-loader" style="display: inline-block;"></div>
+                                        </h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <footer class="footer" id="custom-footer">
+            <div class="container-fluid">
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            Design & Developed by<p><b class="ml-1"><a
+                                        href="https://innak-crew.github.io/links?redirect=linkedin" target="_blank"
+                                        rel="noopener noreferrer">innak</a></b></p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <div class="logo">
+                                <a href="https://innak-crew.github.io/links?redirect=linkedin" target="_blank"
+                                    rel="noopener noreferrer"><img
+                                        src="https://innak-crew.github.io/innak-logo/rec/Innak-Transprent.png"
+                                        alt="innak"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="../asserts/js/bulma.main.js"></script>
+    <script type="module" src="../asserts/js/Admin/index.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+</body>
+
+</html>

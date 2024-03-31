@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>IBF - Finish Profile Setup</title>
+    <link rel="stylesheet" href="../asserts/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../asserts/css/cropper.css">
+    <link rel="stylesheet" href="../asserts/css/notify.css">
+    <link rel="stylesheet" href="../asserts/css/style.css">
+    <link rel="icon" type="image/png" href="../asserts/img/ibf-main-logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../asserts/img/ibf-main-logo.png" sizes="16x16">
+    <style>
+        .logo {
+            max-width: 50px;
+        }
+
+        .label {
+            cursor: pointer;
+        }
+
+        .img-container img {
+            max-width: 100%;
+        }
+
+        .label {
+            font-weight: bold;
+            width: 100% !important;
+        }
+
+        #uploadResumeField {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .form-control:focus {
+            color: #495057;
+            background-color: #fff;
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+
+        .icon-loader {
+            position: relative;
+            width: 20px;
+            display: none;
+            height: 20px;
+            border-radius: 50%;
+            border: 3px solid #514b82;
+            animation: l20-1 0.8s infinite linear alternate, l20-2 1.6s infinite linear;
+        }
+
+        @keyframes l20-1 {
+            0% {
+                clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%)
+            }
+
+            12.5% {
+                clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%)
+            }
+
+            25% {
+                clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%)
+            }
+
+            50% {
+                clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+            }
+
+            62.5% {
+                clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+            }
+
+            75% {
+                clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%)
+            }
+
+            100% {
+                clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%)
+            }
+        }
+
+        @keyframes l20-2 {
+            0% {
+                transform: scaleY(1) rotate(0deg)
+            }
+
+            49.99% {
+                transform: scaleY(1) rotate(135deg)
+            }
+
+            50% {
+                transform: scaleY(-1) rotate(0deg)
+            }
+
+            100% {
+                transform: scaleY(-1) rotate(-135deg)
+            }
+        }
+
+        #pre-loader {
+            /* display: none; */
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: rgb(255, 255, 255);
+            width: auto;
+            z-index: 999999;
+        }
+
+        .register-loader-center-div {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .loader {
+            width: 50px;
+            height: 25px;
+            display: flex;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: "";
+            flex: 1;
+            background: #00A14E;
+            transform-origin: top right;
+            animation: l10-1 2s infinite;
+        }
+
+        .loader:after {
+            background: #03649C;
+            transform-origin: top left;
+            animation-delay: .25s;
+        }
+
+        @keyframes l10-1 {
+
+            0%,
+            5% {
+                transform: rotate(0)
+            }
+
+            20%,
+            30% {
+                transform: rotate(90deg)
+            }
+
+            45%,
+            55% {
+                transform: rotate(180deg)
+            }
+
+            70%,
+            80% {
+                transform: rotate(270deg)
+            }
+
+            95%,
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+            <a class="navbar-brand" href="/">
+                <img src="../asserts/img/ibf-logo.png" height="100%" alt="IBF Logo" class="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a id="signOutButton" class="nav-link btn btn-danger text-light" href="#">
+                            <strong>Sign Out</strong>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <section class="section pt-5 mb-5">
+            <div class="container">
+                <h2 class="title mb-4 text-danger text-center mt-5">Complete your profile</h2>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="registrationForm">
+                                    <div class="container">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6">
+                                                <figure class="text-center">
+                                                    <img class="rounded-circle" src="" id="avatar" width="128"
+                                                        height="128">
+                                                </figure>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label">Change Profile Pic</label>
+                                                    <div class="input-group" data-toggle="tooltip"
+                                                        title="Change your avatar">
+                                                        <input class="form-control" type="file" name="photo"
+                                                            id="avatarInput" accept="image/*">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group mt-4">
+                                        <label class="label">Full Name <span class="text-danger">*</span></label>
+                                        <input class="form-control" type="text" name="fullname" id="name" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="label">Email ID <span class="text-danger">*</span> </label>
+                                        <input class="form-control" type="email" name="email" id="email" disabled
+                                            required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="label">IBF Role <span class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                            <select class="custom-select" name="ibfrole" id="ibfrole" required>
+                                                <option value="" disabled selected>Select Your Role</option>
+                                                <option value="Campus Ambassador">Campus Ambassador</option>
+                                                <option value="MemberShips">MemberShips</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">College Name <span class="text-danger">*</span> </label>
+                                        <input class="form-control" type="text" name="collegename" id="collegename"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">College Short Name <span class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="text" name="collegeshortname"
+                                            id="collegeshortname" placeholder="Eg: KSRIET, KSRCE " required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">College ID Proof <span class="text-danger">*</span>
+                                            <div class="icon-loader" id="id-loader"></div>
+                                        </label>
+                                        <input class="form-control" type="file" name="collegeidproof"
+                                            id="collegeidproof" accept="image/*" required>
+                                    </div>
+                                    <div class="form-group" id="uploadResumeField">
+                                        <label class="label" for="resume">Upload Resume <span
+                                                class="text-danger">*</span>
+                                            <div class="icon-loader" id="resume-loader"></div>
+                                        </label>
+                                        <input class="form-control" type="file" name="resume" id="resume"
+                                            accept=".pdf,.doc,.docx">
+                                        <small class="form-text text-muted">Please upload your resume in PDF, DOC, or
+                                            DOCX format.</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="label">Mobile No <span class="text-danger">*</span> </label>
+                                        <input class="form-control" type="tel" name="mobile" id="mobile"
+                                            pattern="[0-9]{10}" required>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid 10-digit mobile number.
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">DOB <span class="text-danger">*</span> </label>
+                                        <input class="form-control" type="date" name="dob" id="dob" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">Address <span class="text-danger">*</span> </label>
+                                        <textarea class="form-control" name="address" id="address" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label">Gender <span class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                            <select class="custom-select" name="gender" id="gender" required>
+                                                <option value="" disabled selected>Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label" for="bloodgroup">Blood Group <span
+                                                class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                            <select class="custom-select" name="bloodgroup" id="bloodgroup" required>
+                                                <option value="" disabled selected>Select Blood Group</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                                <option value="Bombay Blood Group">Bombay Blood Group</option>
+                                                <option value="Rh-null">Rh-null</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary">Submit <div class="icon-loader"
+                                                id="submit-loader"></div></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalLabel">Crop the image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="img-container">
+                            <img id="image" src="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pre-loader">
+            <div class="register-loader-center-div">
+                <div class="loader"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="../asserts/js/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="../asserts/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../asserts/js/jspdf.umd.min.js"></script>
+    <script src="../asserts/js/cropper.js"></script>
+    <script src="../asserts/js/notify.js"></script>
+    <script src="../asserts/js/e-notify.js"></script>
+    <script type="module" src="../asserts/js/final-profile-setup.js"></script>
+
+</body>
+</html>

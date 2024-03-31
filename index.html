@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IBF</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="asserts/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="asserts/img/ibf-main-logo.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="asserts/img/ibf-main-logo.png" sizes="16x16">
+    <script src="asserts/js/script.js"></script>
+    <link rel="stylesheet" href="asserts/css/dna.css">
+
+    <style>
+        .card-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-warp: warp;
+            padding: 30px;
+        }
+
+        .card-container .card {
+            position: relative;
+            max-width: 300px;
+            height: 215px;
+            margin: 30px 10px;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.095);
+            transition: 0.3s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .card-container .card:hover {
+            height: 300px;
+        }
+
+
+        .card-container .card .image {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            top: -40%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+
+            border-radius: 15px;
+        }
+
+        .card-container .card .image img {
+            max-width: 100%;
+            border-radius: 15px;
+        }
+
+        .card-container .card .content {
+            position: relative;
+            top: -140px;
+            padding: 10px 15px;
+            color: #111;
+            text-align: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s ease-in-out;
+
+        }
+
+        .card-container .card .content h3 {
+            color: var(--color-1);
+        }
+
+        .card-container .card:hover .content {
+            margin-top: 50px;
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0.2s;
+        }
+
+        .card-container .card:hover .image,
+        .card-container .card:hover .image img {
+            transition: 0.4s;
+            border-radius: 50%;
+
+        }
+
+        .has-background-success-light {
+            background-color: #effaf4 !important;
+        }
+
+        section h1 {
+            color: var(--color-1);
+        }
+
+        #preloader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            max-width: 100vw;
+            top: 50px;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: var(--color-1);
+        }
+
+
+
+        @media (max-width: 768px) {
+            #preloader {
+                top: 30px;
+            }
+
+            #preloader span svg {
+                height: 20vw;
+                stroke-dasharray: 20vw, 20vw;
+                stroke-width: 4vw;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            #preloader span svg {
+                height: 8vw;
+                stroke-dasharray: 12vw, 16vw;
+                stroke-width: 2.8vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #preloader {
+                top: 35px;
+            }
+        }
+
+        .benefits-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .benefits-item {
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            width: 48%;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .benefits-item {
+                width: 100%;
+            }
+        }
+
+        .benefits-item h3 {
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .benefits-item ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+
+        .benefits-item li {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .cta-card {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            width: clamp(300px, 100%, 600px);
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-card:hover {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-card h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .cta-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .cta-card button {
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+        }
+
+        .cta-card button:hover {
+            background-color: #444;
+            cursor: pointer;
+        }
+
+        
+        .benefits-item {
+            flex: 1;
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .benefits-item h3 {
+            font-size: 24px;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .cta-card {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+        .cta-card h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .cta-card p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 768px) {
+            .benefits-item {
+                flex-basis: 100%;
+            }
+        }
+
+        .has-background-own-light{
+            background-color: #11ab4f15;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="">
+        <nav class="navbar is-fixed-top is-mobails" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="asserts/img/ibf-logo.png" width="100%" height="">
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="#home">
+                        Home
+                    </a>
+                    <a class="navbar-item " href="#about">
+                        About
+                    </a>
+                    <a class="navbar-item" href="#team">
+                        Team
+                    </a>
+                    <a class="navbar-item" href="#partners">
+                        Partners 
+                    </a>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button bg-primary js-modal-trigger" data-target="modal-js-example">
+                                <strong id="main-action">Login/Signup</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero is-medium has-background-own-light" id="home">
+            <div class="hero-body">
+                <div class="is-large has-text-centered">
+                    <img src="asserts/img/ibf-logo.png" width="250px">
+                    <h1 class="title" id="logo-name">Indian Biomedical Forum</h1>
+                    <h2 class="subtitle">
+                        Training Company for Biomedical Engineering, Research and development in Biomedical Engineering.
+                    </h2>
+                    <div class="container">
+                        <div id="preloader">
+                            <span>
+                                <svg x="0px" y="0px" height="100" width="100vw" viewBox="0 0 298 53.9">
+                                    <style>
+                                        path {
+                                            stroke-dasharray: 150, 200;
+                                            stroke-dashoffset: 0;
+                                            animation: lakat 4s infinite linear;
+                                        }
+
+                                        @keyframes lakat {
+                                            0% {
+                                                stroke-dashoffset: 0;
+                                                stroke: var(--color-4);
+                                            }
+
+                                            100% {
+                                                stroke-dashoffset: 1050;
+                                                stroke: var(--color-1);
+                                            }
+                                        }
+                                    </style>
+                                    <path stroke="var(--color-1)" stroke-width="1px" fill="none" class="st0" d="M297.5,41.2h-76.6c-0.5,0-0.9,0.4-1,0.8l-1.6,11.3l-3.1-32c0-0.5-0.4-0.9-0.9-0.9c-0.5,0-0.9,0.3-1,0.8
+                       l-5.3,25.5l-2.3-10.9c-0.1-0.4-0.4-0.7-0.9-0.8c-0.4,0-0.8,0.2-1,0.6l-2.3,4.8h-107c0,0,0,0,0,0H82c-1.6,0-2.2,1.1-2.2,1.6
+                       l-1.6,11.3l-3.1-52c0-0.5-0.4-0.9-0.9-0.9c-0.5,0-0.9,0.3-1,0.8l-9.3,45.5l-2.3-10.9c-0.1-0.4-0.4-0.7-0.9-0.8c-0.4,0-0.8,0.2-1,0.6
+                       l-2.3,4.8H0.5" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="curve"></span>
+        </section>
+
+        <section class="section" id="about">
+            <div class="tile is-ancestor mt-5">
+                <div class="tile is-parent">
+                    <div class="tile is-child box">
+                        <p class="title text-primary">About us</p>
+                        <div class="columns">
+                            <div class="column">
+                                <figure class="image">
+                                    <img src="asserts/img/ibf-1.png">
+                                </figure>
+                            </div>
+                            <div class="column is-four-fifths">
+                                <p class="content has-text-justified">Indian Biomedical Forum is a vibrant community
+                                    designed to cultivate engagement, knowledge sharing, networking, problem-solving,
+                                    resource access, learning, feedback, collaboration, and positive interactions. Here,
+                                    individuals with shared interests converge to exchange ideas, delve into deep
+                                    conversations, and establish meaningful connections on personal and professional
+                                    levels. This platform serves as a hub for diverse perspectives and expertise,
+                                    fostering an environment where members assist one another, collaborate on projects,
+                                    and contribute to ongoing education. Through efficient moderation and explicit
+                                    guidelines, we ensure a courteous and upbeat atmosphere, empowering our community to
+                                    thrive and evolve in response to changing demands.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tile is-6 is-vertical is-parent">
+                    <div class="tile is-child box">
+                        <p class="title text-primary">Vision </p>
+                        <p class="has-text-justified">Cultivate a space for like-minded individuals to interact, share
+                            knowledge, and build
+                            connections. Foster ongoing learning and collaboration while adapting to evolving demands of
+                            forum.</p>
+                    </div>
+
+                    <div class="tile is-child box">
+                        <p class="title text-primary">Mission</p>
+                        <p class="has-text-justified">Create a valuable resource repository, implement clear rules and
+                            efficient moderation to
+                            maintain a positive atmosphere, providing support, suggestions, and collaboration for
+                            problem solving as a community.</p>
+
+                    </div>
+
+                    <!-- <div class="is-hidden-mobile" id="child-dna-element">
+                        <dna-element ></dna-element>
+                    </div> -->
+                </div>
+
+            </div>
+
+        </section>
+        <section class="section" id="team" style="min-height: 80vh;">
+
+            <div class="container mt-5">
+
+                <h1 class="title text-primary has-text-centered">Team Members</h1>
+                <h2 class="subtitle has-text-centered">
+                    Meet our awesome team members!
+                </h2>
+                <team-members></team-members>
+            </div>
+        </section>
+
+        <section class="section benefits-section">
+            <h1 class="title">Benefits</h1>
+            <h2 class="subtitle has-text-centered">
+                Discover the perks of becoming a member or a campus ambassador.
+            </h2>
+            <div class="container benefits-container">
+                <div class="benefits-item">
+                    <h3>Benefits of Memberships:</h3>
+                    <ul>
+                        <li>Exclusive access to webinars and workshops</li>
+                        <li>Discounts on training programs and courses</li>
+                        <li>Opportunities to connect with industry leaders and professionals</li>
+                        <li>Networking events and meetups</li>
+                    </ul>
+                </div>
+                <div class="benefits-item">
+                    <h3>Benefits of Campus Ambassadors:</h3>
+                    <ul>
+                        <li>Campus ambassador certificate with overall ranking based on your performance</li>
+                        <li>Campus recognition and exposure</li>
+                        <li>Exciting coupons for development programs (courses, internships, training programs)</li>
+                        <li>Free access to all events and workshops</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cta-card">
+                <h3>Ready to Join Us?</h3>
+                <p>Get started with our simple application process today!</p>
+                <button class="button bg-primary js-modal-trigger" data-target="modal-js-example">Join Now</button>
+            </div>
+        </section>
+
+        <section class="section" id="partners">
+            <div class="container">
+                <h1 class="title text-primary has-text-centered">Our Partner</h1>
+                <div class="columns is-multiline is-centered is-variable is-1-desktop is-2-tablet is-2-mobile">
+                    <div class="column is-12-mobile is-6-tablet is-4-desktop">
+                        <div class="partner">
+                            <div class="partner-logo">
+                                <a href="https://innak-crew.github.io/links?redirect=linkedin" target="_blank"><img
+                                        src="https://innak-crew.github.io/innak-logo/rec/Innak-Transprent.png"
+                                        alt="Partner Logo 1"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <div id="modal-js-example" class="modal">
+            <div class="modal-background"></div>
+
+            <div class="modal-content">
+                <section class="section">
+                    <div class="container">
+                        <div class="columns is-centered">
+                            <div class="column is-three-fifths-desktop is-three-quarters-tablet">
+                                <div class="card">
+                                    <div class="card-content">
+                                        <div class="content has-text-centered">
+                                            <p class="subtitle">Join our vibrant community of biomedical enthusiasts!
+                                            </p>
+                                            <button type="button" class="login-with-google-btn" id="signInButton">
+                                                Sign in with Google
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+
+
+        <footer id="picassoFooter" class="footer has-background-success-light">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+                        <div class="footer-navigation">
+                            <h3 class="title is-5">Quick Links</h3>
+                            <ul>
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#about">About Us</a></li>
+                                <li><a href="#services">Services</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+                        <div class="footer-contact">
+                            <h3 class="title is-5">Contact Us</h3>
+                            <p>Email: ibf.official.in.@gmail.com</p>
+                            <p>Phone: +91975060 3988</p>
+                        </div>
+                    </div>
+                    <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+                        <div class="footer-social">
+                            <h3 class="title is-5">Follow Us</h3>
+                            <div class="social-icons">
+                                <a href="https://facebook.com" target="_blank" class="social-icon">
+                                    <i class="fa fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="social-icon">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="social-icon">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+                        <div class="footer-art">
+                            <img src="asserts/img/ibf-main-logo.png" alt="IBF Main Logo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <innak-footer></innak-footer>
+    </main>
+    <script src="Component/index.js" type="module"></script>
+    <script type="module" src="asserts/js/main.js"> </script>
+</body>
+
+</html>
