@@ -135,10 +135,6 @@ downloadBtn.addEventListener("click", async e => {
     }
 })
 
-// deleteBtn.addEventListener("click", async e => {
-//     e.preventDefault();
-
-// });
 
 setInterval(() => {
     if (name.getAttribute("disabled") && name.getAttribute("disabled") !== "true") {
@@ -154,7 +150,7 @@ const displayData = async () => {
         email.value = originalData.email;
         collegeName.value = originalData.collegeName;
         collegeShotName.value = originalData.collegeShotName;
-        avatar.src = originalData.profileURL;
+        avatar.src = originalData.profileURL.replace("s96-c","s128-c");
         role.innerHTML = originalData.role === "MemberShips" ? "Member" : "Campus Ambassador";
         if (originalData.status === 'active' || originalData.status === 'approved' ||originalData.status === 'inactive') {
             IDCode.innerHTML = originalData.IDCode;
