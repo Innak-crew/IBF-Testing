@@ -130,7 +130,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 const files = e.target.files;
                 var done = function (url) {
                     resumeLoader.style.display = "none";
-                    window.location.href = "/profile.html"
                 };
                 if (files && files.length > 0) {
                     const file = files[0];
