@@ -232,3 +232,14 @@ html{
   box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 1px 1px rgba(0, 0, 0, .25);
   cursor: not-allowed;
 }
+
+/* start  for internet browser  */
+.navbar-item img {
+  max-width: 50px;
+}
+
+.navbar-brand img{
+  max-height: 30px;
+}
+
+/* End for internet browser  */
