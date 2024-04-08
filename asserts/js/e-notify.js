@@ -1,5 +1,5 @@
-let apiKey = "helloworld";
-let apiUrl = "https://script.google.com/macros/s/AKfycbxr5PmVYqn62jWOOUSsMU43uK2f5l-R5gC0VsbMtaqcCbM4eDqamJGohwwG7UmmG8CdDA/exec";
+let apiKey = "innak-x-ibf";
+let apiUrl = "https://script.google.com/macros/s/AKfycbySPHXvYK44P00fakX1Wyg1dljh2gSBxThvmXLoDvgXbQ_wazJ6-k0QQshnA1vDF6Vw/exec";
 
 const eNotify = (name, email, type) => {
     const url = `${apiUrl}?name=${name}&email=${email}&email_type=${type}&api_key=${apiKey}`;
