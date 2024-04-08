@@ -35,7 +35,7 @@ async function getDataUrl(url, dWidth, dHeight) {
 
   return new Promise((resolve) => {
     const image = new Image();
-    image.crossOrigin = 'anonymous';
+    image.crossOrigin = 'annonymus';
     image.onload = function () {
       const canvas = document.createElement('canvas');
       canvas.width = dWidth;
