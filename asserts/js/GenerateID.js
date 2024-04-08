@@ -29,12 +29,13 @@ const PRIMARY_COLOR = '#10699F';
 let doc;
 
 async function getDataUrl(url, dWidth, dHeight) {
-  // const Url = url.includes("firebasestorage") ? 'https://cors-anywhere.herokuapp.com/' + url : url.replace("s96-c","s400-c");
-  const Url = url.includes("firebasestorage") ? url : url.replace("s96-c","s400-c");
+  const Url = url.includes("firebasestorage") ? 'https://cors-anywhere.herokuapp.com/' + url : url.replace("s96-c","s400-c");
+
+  // const Url = url.includes("firebasestorage") ? url : url.replace("s96-c","s400-c");
 
   return new Promise((resolve) => {
     const image = new Image();
-    image.crossOrigin = 'annonymus';
+    image.crossOrigin = 'anonymous';
     image.onload = function () {
       const canvas = document.createElement('canvas');
       canvas.width = dWidth;
