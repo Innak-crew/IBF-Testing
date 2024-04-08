@@ -265,7 +265,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     type = "ca_registration";
                 }
 
-                eNotify(Data.name, Data.email, type);
+               await eNotify(Data.name, Data.email, type);
 
                 new Notify({
                     status: "success",
