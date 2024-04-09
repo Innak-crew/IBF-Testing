@@ -28,19 +28,69 @@ window.jsPDF = window.jspdf.jsPDF;
 const PRIMARY_COLOR = '#10699F';
 let doc;
 
+// async function getDataUrl(url, dWidth, dHeight) {
+//   const Url = url.includes("firebasestorage") ? 'https://cors-anywhere.herokuapp.com/' + url : url.replace("s96-c","s400-c");
+
+//   return new Promise((resolve) => {
+//     const image = new Image();
+//     image.crossOrigin = 'annonymus';
+//     image.onload = function () {
+//       const canvas = document.createElement('canvas');
+//       canvas.width = dWidth;
+//       canvas.height = dHeight;
+
+//       const aspectRatio = this.naturalWidth / this.naturalHeight;
+//       let imgWidth = dWidth;
+//       let imgHeight = dHeight;
+//       if (aspectRatio > 1) {
+//         imgWidth = dWidth * aspectRatio;
+//       } else {
+//         imgHeight = dHeight / aspectRatio;
+//       }
+
+//       const ctx = canvas.getContext('2d');
+//       ctx.drawImage(
+//         this,
+//         -(imgWidth - dWidth) / 2,
+//         -(imgHeight - dHeight) / 2,
+//         imgWidth,
+//         imgHeight
+//       );
+
+//       ctx.globalCompositeOperation = 'destination-in';
+//       ctx.fillStyle = '#000';
+//       ctx.beginPath();
+//       ctx.arc(dWidth * 0.5, dHeight * 0.5, dWidth * 0.5, 0, 2 * Math.PI);
+//       ctx.fill();
+//       resolve(canvas.toDataURL('image/png'));
+//     };
+//     image.onerror = function () {
+//       resolve(EMPTY_IMAGE);
+//     };
+//     image.src = Url;
+//   });
+// }
+
 async function getDataUrl(url, dWidth, dHeight) {
-  const Url = url.includes("firebasestorage") ? 'https://cors-anywhere.herokuapp.com/' + url : url.replace("s96-c","s400-c");
+  // Check if the URL is from Firebase Storage
+  const imageUrl = url.includes("firebasestorage") ? url : url.replace("s96-c","s400-c");
 
-  // const Url = url.includes("firebasestorage") ? url : url.replace("s96-c","s400-c");
-
-  return new Promise((resolve) => {
+  // Return a promise
+  return new Promise((resolve, reject) => {
+    // Create a new image element
     const image = new Image();
-    image.crossOrigin = 'annonymus';
+
+    // Set crossOrigin attribute to anonymous to enable CORS
+    image.crossOrigin = 'anonymous';
+
+    // Set up event listeners for load and error events
     image.onload = function () {
+      // Create a canvas element
       const canvas = document.createElement('canvas');
       canvas.width = dWidth;
       canvas.height = dHeight;
 
+      // Calculate aspect ratio
       const aspectRatio = this.naturalWidth / this.naturalHeight;
       let imgWidth = dWidth;
       let imgHeight = dHeight;
@@ -50,6 +100,7 @@ async function getDataUrl(url, dWidth, dHeight) {
         imgHeight = dHeight / aspectRatio;
       }
 
+      // Draw the image onto the canvas
       const ctx = canvas.getContext('2d');
       ctx.drawImage(
         this,
@@ -59,17 +110,24 @@ async function getDataUrl(url, dWidth, dHeight) {
         imgHeight
       );
 
+      // Apply a circular mask
       ctx.globalCompositeOperation = 'destination-in';
       ctx.fillStyle = '#000';
       ctx.beginPath();
       ctx.arc(dWidth * 0.5, dHeight * 0.5, dWidth * 0.5, 0, 2 * Math.PI);
       ctx.fill();
+
+      // Resolve the promise with the data URL of the canvas
       resolve(canvas.toDataURL('image/png'));
     };
+
+    // Handle errors
     image.onerror = function () {
-      resolve(EMPTY_IMAGE);
+      reject(new Error('Failed to load image'));
     };
-    image.src = Url;
+
+    // Set the image source
+    image.src = imageUrl;
   });
 }
 
