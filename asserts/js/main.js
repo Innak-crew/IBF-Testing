@@ -63,10 +63,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
      console.clear();
-      console.log("%c   ⚠️  STOP! ⚠️   ", "color: #ff4136; font-size: 24px; font-weight: bold; padding: 10px 20px; border: 2px solid white; border-radius: 10px; animation: blinker 1s linear infinite;");
-      console.log("%cinnak: This is a browser feature intended for developers. If someone told you to copy and paste something here to enable a feature or hack someone's account, it is a SCAM and could compromise your data or security.", "font-size: 16px; font-weight: bold; color: #f00;");
-      console.log("%c👨‍💻 Developed by innak", "color: #f9a034; font-size: 18px; font-weight: bold;");
-      console.log("%c🔗 This page was developed by innak. For more information, visit: https://innak.com", "font-size: 14px; font-weight: bold; color: blue;");
-      
+const styles = `
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: #FF0000; 
+            background-color: #FFFF00; 
+            padding: 10px;
+            border: 2px solid #FF0000; 
+            border-radius: 5px;
+            text-align: center;
+            display: block;
+            margin: 10px 0;
+        `;
+const warningMessage = `%c⚠️  STOP! ⚠️%c\n`;
+const warningDetails =
+    `%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a feature or hack someone's account, it is a SCAM and could compromise your data or security.\n\n`;
+const developedBy = `%c👨‍💻 Made by INNAK\n`;
+const moreInfo = `%c🔗 For more information, visit: https://innak.in\n`;
+
+console.log(
+    warningMessage + warningDetails + developedBy + moreInfo,
+    'font-size: 20px; color: #FF0000; font-weight: bold;',
+    'font-size: 16px; color: #000000;',
+    'font-size: 16px; color: #000000; font-weight: bold;',
+    'font-size: 16px; color: #000000;',
+    'font-size: 16px; color: #1E90FF; font-weight: bold;'
+);
   
   
